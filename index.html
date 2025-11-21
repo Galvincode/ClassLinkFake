@@ -1,380 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Hello, World!</title>
-  <!-- Note: Removed <link rel="stylesheet" href="styles.css" /> as all styles are in-page -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClassLink AI</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="https://cdn.prod.website-files.com/5d6db64572061db9c481aaeb/60182c792aab73bd41f28d27_classlink-logo-vertical.png">
+  
+  <!-- 1. Link to External CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- 2. Tailwind CSS (Library) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 3. Tailwind Configuration (External JS) -->
+  <script src="tailwind_config.js"></script>
+  
+  <!-- Inter Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Google+Sans+Code:ital,wght@0,585;1,585&family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<style>
-  body {
-    padding: 25px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: "Google Sans Code", monospace;
-  }
-
-  .title {
-    color: #5C6AC4;
-    text-align: center;
-    font-family: "Google Sans Code", monospace;
-    font-optical-sizing: auto;
-    font-weight: 585;
-    font-style: normal;
-  }
-
-  .center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
-
-  input {
-    border-radius: 10px;
-    width: 200px;
-    padding: 8px;
-    border: 1px solid #ccc;
-  }
-
-  .sub {
-    background-color: #5C6AC4;
-    padding: 10px;
-    border-radius: 20px;
-    color: white;
-    text-align: center;
-    display: inline-block;
-    transition: ease 0.5s ease;
-    text-decoration: none;
-    margin: 30px;
-    transition: all 1s ease;
-    font-size: 15px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .sub:hover {
-    background-color: #BA27BA;
-    transform: scale(1.1);
-    position: relative;
-    animation: bounce 1.9s infinite;
-    outline-color: #1A041A;
-    outline-width: 3px;
-    outline-style: solid;
-  }
-
-  img {
-    width: 60px;
-    height: auto;
-  }
-
-  .slogan {
-    color: #5C6AC4;
-    margin: 10px;
-    font-family: "Google Sans Code", monospace;
-    font-optical-sizing: auto;
-    font-weight: 585;
-    font-style: normal;
-  }
-
-  .help-text {
-    color: #5C6AC4;
-    margin: 10px;
-    font-family: "Google Sans Code", monospace;
-    font-optical-sizing: auto;
-    font-weight: 585;
-    font-style: normal;
-    text-align: center;
-  }
-
-  /* --- New Portal/Modal Styles --- */
-
-  #portal-overlay {
-    /* Hidden by default */
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.6);
-    /* Flexbox to center the modal */
-    align-items: center;
-    justify-content: center;
-  }
-
-  #portal-modal {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 900px;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-
-  #portal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-  }
-
-  #portal-title {
-    color: #5C6AC4;
-    font-family: "Google Sans Code", monospace;
-    font-weight: 585;
-    margin: 0;
-  }
-
-  #portal-close-btn {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
-
-  #portal-close-btn:hover,
-  #portal-close-btn:focus {
-    color: black;
-    text-decoration: none;
-  }
-
-  #portal-content {
-    flex-grow: 1; /* Makes content fill the space */
-    padding-top: 15px;
-  }
-
-  /* The Iframe itself */
-  #portal-frame {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 5px;
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  /* The message element (replaces alert) */
-  #portal-message {
-    font-size: 1.1em;
-    color: #333;
-    line-height: 1.6;
-  }
-
-  /* Added style for the new tab link */
-  .portal-link {
-    display: inline-block;
-    padding: 10px 15px;
-    margin-top: 15px;
-    background-color: #5C6AC4;
-    color: white !important; /* Force white text */
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  .portal-link:hover {
-    background-color: #4a56a1;
-  }
-
-</style>
-
-<body>
-  <img src="data:image/png;base64,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">
-  <a class="slogan">Powering STEM Classrooms Across The US</a>
-  <br />
-  <br />
-  <br />
-  <br />
-  <br />
-  <h1 class="title">Find your classroom!</h1>
-
-  <br />
-  <h4 class="title">Enter Class Code</h4>
-  <div class="center">
-    <input type="text" id="text" reqiured>
-  </div>
-  <br />
-  <div class="center">
-    <h6 class="help-text">Please Use All Lowercase Letters</h6>
-  </div>
-  <br />
-  <div class="center">
-    <br />
-    <br />
-    <button class="sub" onclick="checkValue()">Find Class!</button>
-  </div>
-
-  <div class="help-text">
-    <a class="help-text">Type "Help" in the textbar for help</a>
-  </div>
-  
-  <!-- Note: Removed <script src="script.js"></script> and combined JS below -->
-  
-  <!-- 
-    --- NEW PORTAL / MODAL HTML --- 
-    This is the popup structure. It's hidden by default.
-  -->
-  <div id="portal-overlay">
-    <div id="portal-modal">
-      <div id="portal-header">
-        <h2 id="portal-title">Portal</h2>
-        <!-- This is the 'x' close button -->
-        <button id="portal-close-btn">&times;</button>
-      </div>
-      <div id="portal-content">
-        <!-- 
-          Content will be inserted here by JavaScript.
-          It will be *either* a message or an iframe.
-        -->
-        <p id="portal-message" style="display:none;"></p>
-        <iframe id="portal-frame" src="about:blank" style="display:none;"></iframe>
-      </div>
-    </div>
-  </div>
-
-
-  <script>
-    // --- Get references to all the new portal elements ---
-    const overlay = document.getElementById('portal-overlay');
-    const modal = document.getElementById('portal-modal');
-    const modalTitle = document.getElementById('portal-title');
-    const messageEl = document.getElementById('portal-message');
-    const frameEl = document.getElementById('portal-frame');
-    const closeBtn = document.getElementById('portal-close-btn');
-
-
-    /**
-     * Shows a simple message in the modal (replaces alert())
-     */
-    function showMessage(title, message) {
-      modalTitle.textContent = title;
-      messageEl.innerHTML = message; // Use innerHTML to allow <br> tags
-      
-      // Show the message, hide the iframe
-      messageEl.style.display = 'block';
-      frameEl.style.display = 'none';
-      frameEl.src = 'about:blank'; // Stop any loading
-      
-      overlay.style.display = 'flex'; // Show the modal
-    }
-
-    /**
-     * Shows an iframe portal in the modal (replaces window.open())
-     */
-    function showPortal(title, url) {
-      modalTitle.textContent = title;
-      frameEl.src = url;
-
-      // Show the iframe, hide the message
-      frameEl.style.display = 'block';
-      messageEl.style.display = 'none';
-      
-      overlay.style.display = 'flex'; // Show the modal
-    }
-
-    /**
-     * Hides the modal and resets it
-     */
-    function closeModal() {
-      overlay.style.display = 'none';
-      frameEl.src = 'about:blank'; // Stop video/audio/loading
-      messageEl.innerHTML = '';
-      modalTitle.textContent = '';
-    }
-
-    // --- Event Listeners to close the modal ---
-    closeBtn.onclick = closeModal;
-    
-    // Close if user clicks on the dark overlay (outside the modal)
-    overlay.onclick = function(event) {
-      if (event.target == overlay) {
-        closeModal();
-      }
-    }
-
-
-    /**
-     * This is your original function, but updated to use the new
-     * showMessage() and showPortal() functions.
-     * * I also fixed the logic with 'else if' so the 'invalid'
-     * message only appears when no other code matches.
-     */
-     
-    // --- Classroom Database ---
-    // TO ADD NEW CODES, just add a new entry inside this 'classrooms' object.
-    // Follow the format:
-    //
-    // "your-code-here": {
-    //   type: "message",  // or "portal"
-    //   title: "Title for the Popup",
-    //   content: "Your message HTML" // or "https://your-url.com" for portals
-    // },
-    //
-    const classrooms = {
-      "pizza": {
-        type: "portal",
-        title: "Pizza Hub",
-        content: "https://the-pizza-editiongames.github.io/#google_vignette"
-      },
-      "help": {
-        type: "message",
-        title: "Help",
-        content: "You can do the following things:<br><br>1. Type <b>poki</b> to open Poki.<br>2. Type <b>pizza</b> to open the Pizza game hub."
-      },
-      "poki": {
-        type: "message",
-        title: "Open Poki",
-        content: "Poki's website cannot be loaded inside a portal.<br><br>" + 
-                 "You can open it in a new tab by clicking the link below:<br><br>" +
-                 "<a href='https://poki.com/' target='_blank' rel='noopener noreferrer' class='portal-link'>Open Poki in New Tab</a>"
-      },
-      "test": {
-        type: "message",
-        title: "Test",
-        content: "It works!"
-      },
-      "minecraft": {
-        type: "message",
-        title: "Minecraft",
-        content: "Opening Minecraft... (Just a test!)"
-      },
-      "sz": {
-        type: "portal",
-        title:"SZ Games",
-        content:"https://sz-games.github.io/#google_vignette"
-      }
-      // Add your new codes right here, inside this object.
-      // Don't forget the comma after the closing } bracket!
-
-    };
-
-    function checkValue() {
-      let value = document.getElementById("text").value;
-      const entry = classrooms[value]; // Try to find the code in our database
-
-      if (entry) {
-        // We found a matching code!
-        if (entry.type === "portal") {
-          showPortal(entry.title, entry.content);
-        } else if (entry.type === "message") {
-          showMessage(entry.title, entry.content);
-        }
-      } else {
-        // No matching code was found
-        showMessage("Error", "Invalid class code. (Try 'help'!)");
+  <!-- Google Gemini Import Map (Required for browser modules) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
       }
     }
   </script>
-</body>
+</head>
 
+<body class="font-sans text-gray-900 min-h-screen flex flex-col">
+
+  <!-- Main Content Area -->
+  <main class="flex-grow flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md p-8 rounded-2xl shadow-2xl animate-fade-in-up">
+      
+      <!-- Logo -->
+      <img class="h-16 w-auto mx-auto transition-transform duration-300 hover:scale-110" src="https://cdn.prod.website-files.com/5d6db64572061db9c481aaeb/60182c792aab73bd41f28d27_classlink-logo-vertical.png" alt="ClassLink Logo">
+      
+      <!-- Slogan -->
+      <p class="text-center text-gray-600 mt-2 font-medium">Powering STEM Classrooms Across The US</p>
+      
+      <h1 class="text-3xl font-bold text-center text-indigo-700 mt-6 tracking-tight">
+        Find Your Classroom
+      </h1>
+      
+      <h4 class="text-xs font-bold text-gray-400 text-center mt-6 uppercase tracking-widest">
+        Enter Class Code
+      </h4>
+
+      <!-- Input Form -->
+      <div class="mt-4 relative group">
+        <input type="text" id="text" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/20 transition-all duration-300 bg-white/50 backdrop-blur-sm placeholder-gray-400" placeholder="">
+      </div>
+      
+      <div class="text-center text-xs text-gray-500 mt-2">
+        <p>Supports codes or natural language search.</p>
+      </div>
+
+      <!-- Button -->
+      <div class="mt-6">
+        <button id="find-class-btn" class="w-full bg-gradient-to-r from-blue-600 to-blue-600 text-white py-3.5 rounded-xl font-bold shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all duration-200">
+          Find Class
+        </button>
+      </div>
+
+      <!-- Help Text -->
+      <div class="text-center text-sm text-gray-500 mt-8">
+        <p>Type <span class="font-bold text-indigo-600">"help"</span> in the text bar for assistance.</p>
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center p-4 text-white/80 text-sm mt-8 font-medium tracking-wide">
+    <p>&copy; 2025 ClassLink. All rights reserved.</p>
+    <p class="text-xs opacity-75">Version: 7.0 (AI Enabled)</p>
+  </footer>
+
+  <!-- Modal HTML -->
+  <div id="portal-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300" style="display:none;">
+    <div id="portal-modal" class="glass-modal w-full max-w-5xl h-[85vh] rounded-2xl shadow-2xl flex flex-col animate-pop transform origin-center">
+      
+      <!-- Modal Header -->
+      <div id="portal-header" class="flex justify-between items-center border-b border-gray-200/50 p-5">
+        <h2 id="portal-title" class="text-xl font-bold text-indigo-700 flex items-center gap-2">
+          <span>Loading...</span>
+        </h2>
+        <button id="portal-close-btn" class="text-gray-400 hover:text-red-500 transition-colors text-3xl leading-none">&times;</button>
+      </div>
+      
+      <!-- Modal Content -->
+      <div id="portal-content" class="flex-grow p-0 overflow-hidden relative rounded-b-2xl">
+        
+        <div class="p-8 overflow-y-auto h-full" id="message-container" style="display:none;">
+           <p id="portal-message" class="text-lg text-gray-800 leading-relaxed"></p>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="portal-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm z-10" style="display: none;">
+          <div class="spinner mb-4"></div>
+          <p class="text-lg font-medium text-indigo-600 animate-pulse">Searching the universe...</p>
+        </div>
+
+        <iframe id="portal-frame" src="about:blank" class="w-full h-full border-0" style="display:none;"></iframe>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- 4. Link to External Logic Script -->
+  <script type="module" src="script.js"></script>
+</body>
 </html>
