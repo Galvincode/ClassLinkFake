@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // --- CONFIGURATION ---
-const API_KEY = "AIzaSyAqNp4E2tCD9QprWSH_dy1jaDWK0tC4OV0"; 
+const API_KEY = "AIzaSyDhpAWE1TNDf2dEdd0CGe7CGgFppTmZbAA"; 
 
 // --- Element variables ---
 let overlay, modal, modalTitle, messageEl, messageContainer, frameEl, closeBtn, loadingEl, findBtn;
@@ -233,5 +233,6 @@ document.addEventListener("DOMContentLoaded", function() {
   
   if (findBtn) findBtn.onclick = checkValue;
 });
+
 
 
