@@ -107,6 +107,11 @@ const classrooms = {
     type:"portal",
     title:"HTML 5 Games",
     content:"https://html5games.com/"
+  },
+  "salvy clicker": {
+    type:"portal",
+    title: "Salvy Clicker",
+    content:"https://galvincode.github.io/Salvy-clicker/"
   }
 };
 
@@ -236,6 +241,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   if (findBtn) findBtn.onclick = checkValue;
 });
+
 
 
 
