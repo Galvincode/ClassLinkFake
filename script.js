@@ -153,6 +153,9 @@ async function findSiteWithAI(query) {
          - Do not explain. 
          - Start with https://.
       4. If you cannot find a live github.io site via search, return "ERROR".
+      5. If you are givven a URL then just use that URL and dont search for anything
+      6. similer to number 5 if they are giving somthing simmiler to the URL try to complrete the URL the best you can 
+      7. dont use strictly github but you can favor it just get a higffh acuracery rate 
     `;
 
     const result = await model.generateContent(prompt);
@@ -241,6 +244,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   if (findBtn) findBtn.onclick = checkValue;
 });
+
 
 
 
