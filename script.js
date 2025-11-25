@@ -112,7 +112,11 @@ const classrooms = {
     type:"portal",
     title: "Salvy Clicker",
     content:"https://galvincode.github.io/Salvy-clicker/"
-  }
+  },
+  "chat": {
+    type:"portal",
+    title:"chat",
+    content: "https://galvincode.github.io/chat-room-for-classlink/"
 };
 
 /**
@@ -244,6 +248,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   if (findBtn) findBtn.onclick = checkValue;
 });
+
 
 
 
