@@ -117,6 +117,7 @@ const classrooms = {
     type:"portal",
     title:"chat",
     content: "https://galvincode.github.io/chat-room-for-classlink/"
+  }
 };
 
 /**
@@ -248,6 +249,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   if (findBtn) findBtn.onclick = checkValue;
 });
+
 
 
 
