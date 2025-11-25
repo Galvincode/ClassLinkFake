@@ -49,8 +49,6 @@ function closeModal() {
   if (messageEl) messageEl.innerHTML = '';
   if (modalTitle) modalTitle.textContent = '';
 }
-
-// --- Classroom Data ---
 const classrooms = {
   "pizza": {
     type: "portal",
@@ -60,12 +58,12 @@ const classrooms = {
   "help": {
     type: "message",
     title: "Help",
-    content: "<b>NEW LLM Intigration You Can Now Just Discribe The Site You Want And Our AI Will Pull It Up For You!</b><br><br><You can do the following things:<br><br>1. Type <b>poki</b> to open Poki.<br>2. Type <b>pizza</b> to open the Pizza game hub.<br> 3. Type <b>sz</b> to open SZ games <br> 4. Type <b>minecraft</b> to open a minecraft clone<br> 5. You can also type <b>cloudmoom</b> to open CloudMoon.<br> 6. You can also type <b>a-z</b> to open A-Z games <br >7. Type <b>stick man</b> to open a special version of Stick Man Hook <br>8. Type <b>salvy clicker</b> to open a custom build clicker game made by Salvy himself"
+    content: "<b>NEW LLM Intigration You Can Now Just Discribe The Site You Want And Our AI Will Pull It Up For You!</b><br><br>You can do the following things:<br><br>1. Type <b>poki</b> to open Poki."
   },
   "poki": {
     type: "message",
     title: "Open Poki",
-    content: "Poki's website cannot be loaded inside a portal.<br><br>" + 
+    content: "Poki's website cannot be loaded inside a portal.<br><br>" +
              "<a href='https://poki.com/' target='_blank' rel='noopener noreferrer' class='portal-link'>Open Poki in New Tab</a>"
   },
   "test": {
@@ -249,6 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   if (findBtn) findBtn.onclick = checkValue;
 });
+
 
 
 
